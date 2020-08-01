@@ -5,16 +5,15 @@
 ### common key
 - [x] Vernam
 - [ ] Stream
-- block
-  - [x] DES
-  - [x] Triple DES
-  - [ ] AES
-  - mode
-    - [ ] ECB
-    - [ ] CBC
-    - [ ] CFB
-    - [ ] OFB
-    - [ ] CTR
+- [x] DES
+- [x] Triple DES
+- [ ] AES
+- mode
+  - [ ] ECB
+  - [ ] CBC
+  - [ ] CFB
+  - [ ] OFB
+  - [ ] CTR
 
 ### public key
 - [ ] RSA
