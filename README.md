@@ -7,7 +7,7 @@
 - [ ] Stream
 - block
   - [x] DES
-  - [ ] Triple DES
+  - [x] Triple DES
   - [ ] AES
   - mode
     - [ ] ECB
@@ -49,4 +49,3 @@
 - [ ] Station-to-Station protocol
 - [ ] Elliptic Curve Diffie-Hellman
 - [ ] hybrid
-
