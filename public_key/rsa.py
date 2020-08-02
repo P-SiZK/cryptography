@@ -5,20 +5,6 @@ from template import *
 import random
 import math
 
-def extended_gcd(m, n): # mu+nv=gcd(m,n)
-    r0, r1 = m, n
-    u0, u1 = 1, 0
-    v0, v1 = 0, 1
-
-    while r1 != 0:
-        q = r0 // r1
-
-        r0, r1 = r1, (r0 - q * r1)
-        u0, u1 = u1, (u0 - q * u1)
-        v0, v1 = v1, (v0 - q * v1)
-
-    return u0, v0, r0
-
 
 def key_gen(k=2048, e=65537):
     p = gen_prime(k)
