@@ -16,7 +16,7 @@
   - [ ] CTR
 
 ### public key
-- [ ] RSA
+- [x] RSA
 - [ ] ElGamal
 - [ ] general ElGamal
 - [ ] Rabin
