@@ -20,7 +20,7 @@ def is_probable_prime(n, cnt=100): # Miller-Rabin test x cnt
     if n == 1 or n & 1 == 0:
         return False
 
-    U = 7858321551080267055879090 # U=p1*p2*...*p19
+    U = 278970415063349480483707695 # U=p2*...*p20
     if n >= U and math.gcd(n, U) != 1:
         return False
 

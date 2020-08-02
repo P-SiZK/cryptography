@@ -18,19 +18,23 @@ def key_gen(k=2048, e=65537):
             if math.gcd(phiN, e) == 1:
                 break
 
-    _, d, _ = extended_gcd(phiN, e)
-    d %= phiN
+    d = extended_gcd(phiN, e)[1] % phiN
 
-    return (N, e), d
+    return (N, e), (p, q, d)
 
 def encrypt(m, pk):
     N, e = pk
     c = pow(m, e, N)
     return c
 
-def decrypt(c, pk, sk):
-    N, _, d = *pk, sk
-    m_ = pow(c, d, N)
+def decrypt(c, sk):
+    p, q, d = sk
+    a = extended_gcd(q, p)[1] % q
+    d1, d2 = d % (p-1), d % (q-1)
+
+    c1, c2 = c % p, c % q
+    m1, m2 = pow(c1, d1, p), pow(c2, d2, q)
+    m_ = (a * (m2 - m1) % q) * p + m1
     return m_
 
 
@@ -40,10 +44,10 @@ def main():
 
     pk, sk = key_gen()
     c = encrypt(m, pk)
-    m_ = decrypt(c, pk, sk)
+    m_ = decrypt(c, sk)
 
-    print("public key \t : N = %d, \n\t\t   e = %d" %(pk[0], pk[1]))
-    print("secret key \t : d = %d" %(sk))
+    print("public key : \n\t N = %d, \n\t e = %d" %(pk[0], pk[1]))
+    print("secret key : \n\t p = %d, \n\t q = %d, \n\t d = %d" %(sk[0], sk[1], sk[2]))
     print("m \t : %d %s" %(m, bin_to_str(m)))
     print("c \t : %d %s" %(c, bin_to_str(c)))
     print("m\' \t : %d %s" %(m_, bin_to_str(m_)))
