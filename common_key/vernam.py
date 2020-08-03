@@ -5,7 +5,7 @@ from template import *
 import random
 
 
-def key_gen(n, seed=None):
+def key_gen(n):
     key = random.randrange(1 << n)
     return key
 
