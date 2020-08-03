@@ -1,6 +1,7 @@
 import random
 import math
 
+
 def left_circular_shift(x, n, bit):
     res = ((x << n) & ((1 << bit)-1)) | (x >> (bit-n))
     return res
