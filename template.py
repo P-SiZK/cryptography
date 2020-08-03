@@ -14,15 +14,17 @@ def bit_len(b):
     return (b.bit_length() + 7) // 8 * 8
 
 
-def is_probable_prime(n, cnt=100): # Miller-Rabin test x cnt
+def is_probable_prime(n, cnt=50): # Miller-Rabin test x cnt
     if n == 2:
         return True
-    if n == 1 or n & 1 == 0:
+    if n <= 1 or n & 1 == 0:
         return False
 
-    U = 278970415063349480483707695 # U=p2*...*p20
-    if n >= U and math.gcd(n, U) != 1:
-        return False
+    for i in [3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71]:
+        if n == i:
+            return True
+        if n % i == 0:
+            return False
 
     d = (n-1) >> 1
     while d & 1 == 0:
@@ -44,7 +46,7 @@ def is_probable_prime(n, cnt=100): # Miller-Rabin test x cnt
 
 def gen_prime(bit=2048):
     while True:
-        p = random.randrange(1 << (bit-1), 1 << bit)
+        p = random.randrange((1 << (bit-1))+1, 1 << bit, 2)
         if is_probable_prime(p):
             return p
 
