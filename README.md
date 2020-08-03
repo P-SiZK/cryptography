@@ -4,7 +4,6 @@
 
 ### common key
 - [x] Vernam
-- [ ] Stream
 - [x] DES
 - [x] Triple DES
 - [ ] AES
