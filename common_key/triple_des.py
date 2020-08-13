@@ -3,7 +3,6 @@ import sys
 sys.path.append(os.path.join(os.path.dirname(__file__), "../"))
 from template import *
 from des import key_gen as des_key_gen, encrypt as des_encrypt, decrypt as des_decrypt
-import random
 
 
 def key_gen(option=3): # option 1:1key(DES), 2:2key, 3:3key

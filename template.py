@@ -2,17 +2,23 @@ import random
 import math
 
 
-def left_circular_shift(x, n, bit):
-    res = ((x << n) & ((1 << bit)-1)) | (x >> (bit-n))
+def left_circular_shift(x, n, x_bit):
+    res = ((x << n) & ((1 << x_bit)-1)) | (x >> (x_bit-n))
     return res
 
-def right_circular_shift(x, n, bit):
-    res = ((x << (bit-n)) & ((1 << bit)-1)) | (x >> n)
+def right_circular_shift(x, n, x_bit):
+    res = ((x << (x_bit-n)) & ((1 << x_bit)-1)) | (x >> n)
     return res
 
 
 def bit_len(b):
     return (b.bit_length() + 7) // 8 * 8
+
+
+def gen_random_Nbit_int(n):
+    res = random.randrange(1 << (n-1))
+    res |= 1 << (n-1)
+    return res
 
 
 def is_probable_prime(n, cnt=50): # Miller-Rabin test x cnt
@@ -45,9 +51,9 @@ def is_probable_prime(n, cnt=50): # Miller-Rabin test x cnt
 
     return True
 
-def gen_prime(bit=2048):
+def gen_prime(n=2048):
     while True:
-        p = random.randrange((1 << (bit-1))+1, 1 << bit, 2)
+        p = gen_random_Nbit_int(n) | 1
         if is_probable_prime(p):
             return p
 

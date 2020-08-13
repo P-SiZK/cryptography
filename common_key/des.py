@@ -100,10 +100,10 @@ IP_INV = [40, 8, 48, 16, 56, 24, 64, 32,
           33, 1, 41, 9, 49, 17, 57, 25]
 
 
-def bit_replace(x, table, bit):
+def bit_replace(x, table, n):
     res = 0
     for it, i in enumerate(reversed(table)):
-        res |= ((x >> (bit-i)) & 1) << it
+        res |= ((x >> (n-i)) & 1) << it
     return res
 
 
