@@ -5,7 +5,10 @@ from template import *
 from des import key_gen as des_key_gen, encrypt as des_encrypt, decrypt as des_decrypt
 
 
-def key_gen(option=3): # option 1:1key(DES), 2:2key, 3:3key
+def key_gen(option=3):
+    """
+    option 1:1key(DES), 2:2key, 3:3key
+    """
     key1 = des_key_gen()
     if option == 1:
         return key1,
