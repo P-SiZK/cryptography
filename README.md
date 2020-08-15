@@ -16,8 +16,7 @@
 
 ### public key
 - [x] RSA
-- [ ] ElGamal
-- [ ] general ElGamal
+- [x] ElGamal
 - [ ] Rabin
 - [ ] RSA-OAEP
 - [ ] Elliptic Curve ElGamal
