@@ -25,26 +25,34 @@ def is_probable_prime(n, rounds=10): # Miller-Rabin test x rounds
     if n < 3 or n & 1 == 0:
         return n == 2
 
-    for i in sieve_base:
+    for i in sieve_base[1:]:
         if n == i:
             return True
         if n % i == 0:
             return False
 
-    d = (n-1) >> 1
-    while d & 1 == 0:
-        d >>= 1
+    s = 0
+    t = n-1
+    while t & 1 == 0:
+        s += 1
+        t >>= 1
 
     for k in range(rounds):
         a = random.randrange(2, n)
-        t = d
         y = pow(a, t, n)
 
-        while t != n-1 and y != 1 and y != n-1:
-            y = (y * y) % n
-            t <<= 1
+        if y == 1 or y == n-1:
+            continue
 
-        if y != n-1 and t & 1 == 0:
+        while s != 0:
+            y = (y * y) % n
+            if y == 1:
+                return False
+            if y == n-1:
+                break
+            s -= 1
+
+        if s == 0:
             return False
 
     return True
