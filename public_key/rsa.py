@@ -7,8 +7,8 @@ import math
 
 
 def key_gen(k=2048, e=65537):
-    p = gen_prime(k)
-    q = gen_prime(k)
+    p = gen_prime(k >> 1)
+    q = gen_prime(k >> 1)
     N = p * q
     phiN = (p-1)*(q-1)
 
